@@ -2,6 +2,10 @@
 import numpy as np
 import operator
 import collections
+import matplotlib.pyplot as plt
+
+plt.rcParams['font.sans-serif'] = ['FangSong'] # 指定默认字体
+plt.rcParams['axes.unicode_minus'] = False # 解决保存图像是负号'-'显示为方块的问题
 
 """
 函数说明:创建数据集
@@ -51,8 +55,15 @@ def classify0(inx, dataset, labels, k):
 if __name__ == '__main__':
 	#创建数据集
 	group, labels = createDataSet()
+	plt.scatter(group[:,0], group[:,1],marker = 'x', color = 'm', label='1', s = 30)
+	plt.xlabel('打斗数量')
+	plt.ylabel('接吻数量')
+
 	#测试集
 	test = [101,20]
+
+	plt.scatter(test[0],test[1])
+	plt.show()
 	#kNN分类
 	test_class = classify0(test, group, labels, 3)
 	#打印分类结果
